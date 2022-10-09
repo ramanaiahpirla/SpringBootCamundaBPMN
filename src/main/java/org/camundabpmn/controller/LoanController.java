@@ -19,17 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+
 @RestController
 @RequestMapping(value = "/loan")
 public class LoanController {
-	
+
 	Logger logger = LoggerFactory.getLogger(LoanController.class);
 
 	@Autowired
 	RuntimeService runTimeService;
 
+	@Operation(description = "To apply for a Loan")
 	@PostMapping(path = "/apply")
-	public ResponseEntity<LoanResponse> applyLoan(@RequestBody LoanRequest loanRequest) {
+	public ResponseEntity<LoanResponse> applyLoan(
+			@Parameter(description = "Loan Request", required = true) @RequestBody LoanRequest loanRequest) {
 		logger.debug("<======= Apply Loan () Begin =======>");
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -47,5 +52,5 @@ public class LoanController {
 		return new ResponseEntity<LoanResponse>(response, HttpStatus.OK);
 
 	}
-	
+
 }
