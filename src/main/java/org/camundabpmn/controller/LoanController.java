@@ -7,6 +7,8 @@ import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camundabpmn.vo.LoanRequest;
 import org.camundabpmn.vo.LoanResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +22,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RestController
 @RequestMapping(value = "/loan")
 public class LoanController {
+	
+	Logger logger = LoggerFactory.getLogger(LoanController.class);
 
 	@Autowired
 	RuntimeService runTimeService;
 
 	@PostMapping(path = "/apply")
 	public ResponseEntity<LoanResponse> applyLoan(@RequestBody LoanRequest loanRequest) {
+		logger.debug("<======= Apply Loan () Begin =======>");
 		ObjectMapper mapper = new ObjectMapper();
 
 		@SuppressWarnings("unchecked")
@@ -38,8 +43,9 @@ public class LoanController {
 		response.setRequestedAmount(loanRequest.getRequestedAmount());
 		response.setApplicationId(UUID.randomUUID().toString());
 		response.setProcessInstanceId(instance.getProcessInstanceId());
+		logger.debug("<======= Apply Loan () End =======>");
 		return new ResponseEntity<LoanResponse>(response, HttpStatus.OK);
 
 	}
-
+	
 }
