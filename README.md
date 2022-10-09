@@ -38,7 +38,14 @@ RequestBody : {
   "requestedAmount": "3000000"
 }
 
-
+Response Body :
+{
+  "firstName": "Ramanaiah",
+  "lastName": "Pirla",
+  "applicationId": "a7aaadb7-1e01-4ed3-b1a7-8fd2e075e518",
+  "requestedAmount": 3000000,
+  "processInstanceId": "4b775f91-47cf-11ed-b995-0a0027000004"
+}
 
 
 
