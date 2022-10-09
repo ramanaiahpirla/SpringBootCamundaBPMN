@@ -26,7 +26,8 @@ Spring OpenAPI 1.6.4
 # Exposed API's:
 
 loan-controller : POST method : /loan/apply
-RequestBody : {
+# RequestBody : 
+{
   "firstName": "FirstName",
   "lastName": "LastName",
   "mobile": "999999999",
@@ -38,7 +39,7 @@ RequestBody : {
   "requestedAmount": "3000000"
 }
 
-Response Body :
+# Response Body :
 {
   "firstName": "Ramanaiah",
   "lastName": "Pirla",
