@@ -10,6 +10,7 @@ spring:
   h2:
     console:
       enabled: true
+management:  health:    camunda:      enabled: true
 server:
   port: 9090
   servlet:
@@ -19,3 +20,5 @@ camunda:
     admin-user:
       id: demo
       password: demo
+
+  

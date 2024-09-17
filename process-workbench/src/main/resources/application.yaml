@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: process-workbench
+  datasource:
+    url: jdbc:h2:mem:mydb;DB_CLOSE_DELAY=-1;MODE=MySQL;NON_KEYWORDS=ORDER;DB_CLOSE_ON_EXIT=FALSE
+    #jdbc:mysql://localhost:3306/somuca?useSSL=false
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+    #com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+      #hibernate.dialect.storage_engine: innodb
+      #org.hibernate.dialect.MySQL8Dialect
+  h2:
+    console:
+     enabled: true
+     path: /h2-console
+
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
